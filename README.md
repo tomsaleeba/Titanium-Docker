@@ -9,6 +9,7 @@ Appcelerator Titanium Docker image to build Android
 - [ ] Install Alloy only if required
 - [ ] Add example for BitBucket Pipelines
 - [ ] Add example with [TiFastlane](https://github.com/ulizama/TiFastlane) to update Google Play (push builds, update meta ... etc)
+- [ ] Add iOS support
 
 ## Credit
 
