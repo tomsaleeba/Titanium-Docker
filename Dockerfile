@@ -8,18 +8,17 @@ FROM ubuntu:16.04
 MAINTAINER Hazem Khaled <hazem.khaled@gmail.com>
 
 # Install Oracle Java JDK 6
-RUN \
-	apt-get update && \
-	apt-get install -y software-properties-common && \
-	echo oracle-java6-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-	add-apt-repository -y ppa:webupd8team/java && \
-	apt-get update && \
-	apt-get install -y oracle-java6-installer && \
-	rm -rf /var/lib/apt/lists/* && \
-	rm -rf /var/cache/oracle-jdk6-installer
+RUN apt-get update
+RUN apt-get install -y wget
+RUN cd /opt && \
+	# Donwloading from Oracel.com needs login, so we use alternative url
+	wget http://app.nidc.kr/java/jdk-6u45-linux-x64.bin && \
+	chmod +x jdk-6u45-linux-x64.bin && \
+	./jdk-6u45-linux-x64.bin
 
 # Set Java Home to JDK6
-ENV JAVA_HOME /usr/lib/jvm/java-6-oracle
+ENV JAVA_HOME /opt/jdk1.6.0_45/bin/
+ENV PATH /opt/jdk1.6.0_45/bin/:${PATH}
 
 # Install necesary packages (i386 stuff is required for Android 32-bit build; gperf is used by ndk-build)
 RUN \
