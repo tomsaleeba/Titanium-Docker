@@ -46,11 +46,6 @@ RUN cd /opt && \
 	unzip android-ndk.zip && \
 	rm -f android-ndk.zip
 
-	
-# Create build user (required by Titanium)
-RUN useradd -ms /bin/bash build
-USER build
-
 # Set Android SDK/NDK Environment Variable
 ENV ANDROID_SDK /opt/android-sdk-linux
 ENV ANDROID_NDK /opt/android-ndk-r10e
@@ -70,6 +65,10 @@ RUN tisdk install 6.0.4.GA --force
 # Configure Android SDK/NDK path in Titanium CLI
 RUN titanium config android.sdk /opt/android-sdk-linux
 RUN titanium config android.ndk /opt/android-ndk-r10e
+
+# Create build user (required by Titanium)
+RUN useradd -ms /bin/bash build
+USER build
 
 # Set the default build command
 CMD titanium build -b -p android --log-level trace
