@@ -26,16 +26,8 @@ RUN \
 	apt-get update && \
 	apt-get -y install \
 	libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386 \
-	gperf \
 	unzip \
-	nodejs \
-	npm 
-	
-# Alias nodejs command under node
-RUN ln -s /usr/bin/nodejs /usr/bin/node
-
-# Install Titanium SDK and Alloy
-RUN npm install -g titanium alloy
+	gperf
 
 # Grab Android SDK
 RUN cd /opt && \
@@ -59,18 +51,21 @@ RUN chmod -R 777 /opt/
 RUN useradd -ms /bin/bash build
 USER build
 
-# Grab Titanium SDK
-RUN mkdir /home/build/.titanium && \
-	cd /home/build/.titanium && \
-	wget -nv -O titanium.zip http://builds.appcelerator.com/mobile-releases/5.2.2/mobilesdk-5.2.2.GA-linux.zip && \
-	unzip titanium.zip && \
-	rm -f titanium.zip
-#RUN titanium sdk install 5.2.2.GA --default #doesn't work due to bug in titanium
-#RUN appc ti sdk install 5.2.2.GA #appc requires login
-
 # Set Android SDK/NDK Environment Variable
 ENV ANDROID_SDK /opt/android-sdk-linux
 ENV ANDROID_NDK /opt/android-ndk-r10e
+
+# Install nodejs 4.6.x
+RUN \
+	apt-get install -y python-software-properties && \
+	curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
+	sudo apt-get install -y nodejs
+
+# Install Titanium SDK and Alloy
+RUN npm install -g titanium alloy tisdk
+
+# Grab Titanium SDK
+RUN tisdk install 6.0.4.GA --force
 
 # Configure Android SDK/NDK path in Titanium CLI
 RUN titanium config android.sdk /opt/android-sdk-linux
