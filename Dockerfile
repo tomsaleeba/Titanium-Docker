@@ -76,5 +76,5 @@ ENV ANDROID_NDK /opt/android-ndk-r10e
 RUN titanium config android.sdk /opt/android-sdk-linux
 RUN titanium config android.ndk /opt/android-ndk-r10e
 
-# Set the defauilt build command
+# Set the default build command
 CMD titanium build -b -p android --log-level trace
