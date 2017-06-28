@@ -60,7 +60,8 @@ RUN apt-get install -y nodejs
 RUN npm install -g titanium alloy tisdk
 
 # Grab Titanium SDK
-RUN tisdk install 6.0.4.GA --force
+RUN apt-get install -y libxml2-utils
+RUN tisdk install $(echo "cat //sdk-version" | xmllint --shell tiapp.xml | sed '/^\/ >/d' | sed 's/<[^>]*.//g' | echo 6.0.4.GA) --force; exit 0
 
 # Configure Android SDK/NDK path in Titanium CLI
 RUN titanium config android.sdk /opt/android-sdk-linux
