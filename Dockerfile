@@ -4,8 +4,8 @@
 # https://github.com/MartinDevillers/ti.build
 #
 
-FROM ubuntu:14.04
-MAINTAINER Martin Devillers <martin@devillers.nl>
+FROM ubuntu:16.04
+MAINTAINER Hazem Khaled <hazem.khaled@gmail.com>
 
 # Install Oracle Java JDK 6
 RUN \
