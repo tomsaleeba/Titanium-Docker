@@ -51,10 +51,10 @@ ENV ANDROID_SDK /opt/android-sdk-linux
 ENV ANDROID_NDK /opt/android-ndk-r10e
 
 # Install nodejs 4.6.x
-RUN \
-	apt-get install -y python-software-properties && \
-	curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
-	sudo apt-get install -y nodejs
+RUN apt-get install -y python-software-properties
+RUN wget https://deb.nodesource.com/setup_4.x
+RUN chmod +x setup_4.x && ./setup_4.x
+RUN apt-get install -y nodejs
 
 # Install Titanium SDK and Alloy
 RUN npm install -g titanium alloy tisdk
