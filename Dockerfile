@@ -1,7 +1,9 @@
 #
 # Appcelerator Titanium Mobile Build Dockerfile
 #
-# https://github.com/MartinDevillers/ti.build
+# https://github.com/HazemKhaled/Titanium-Docker
+#
+# Original repo https://github.com/MartinDevillers/ti.build
 #
 
 FROM ubuntu:16.04
