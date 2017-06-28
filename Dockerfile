@@ -46,9 +46,9 @@ RUN cd /opt && \
 # Install Android SDK 23 and additional tools
 RUN echo y | /opt/android-sdk-linux/tools/android update sdk --all --filter android-23,platform-tools,build-tools-21.0.0 --no-ui --force
 
-# Grab Android NDK (r10 instead of r11 due to bug; see TIMOB-20613 for more details)
+# Grab Android NDK
 RUN cd /opt && \
-	wget -nv -O android-ndk.zip https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip && \
+	wget -nv -O android-ndk.zip https://dl.google.com/android/repository/android-ndk-r12-linux-x86_64.zip && \
 	unzip android-ndk.zip && \
 	rm -f android-ndk.zip
 
