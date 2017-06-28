@@ -46,8 +46,6 @@ RUN cd /opt && \
 	unzip android-ndk.zip && \
 	rm -f android-ndk.zip
 
-# Set full permissions on /opt/ (ensures build user has appropriate permissions)
-RUN chmod -R 777 /opt/
 	
 # Create build user (required by Titanium)
 RUN useradd -ms /bin/bash build
