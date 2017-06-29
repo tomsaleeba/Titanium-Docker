@@ -57,11 +57,11 @@ RUN chmod +x setup_4.x && ./setup_4.x
 RUN apt-get install -y nodejs
 
 # Install Titanium SDK and Alloy
-RUN npm install -g titanium alloy tisdk
+RUN npm install -g titanium alloy
 
 # Grab Titanium SDK
 RUN apt-get install -y libxml2-utils
-RUN tisdk install $(echo "cat //sdk-version" | xmllint --shell tiapp.xml | sed '/^\/ >/d' | sed 's/<[^>]*.//g' | echo 6.0.4.GA)
+RUN ti sdk install $(echo "cat //sdk-version" | xmllint --shell tiapp.xml | sed '/^\/ >/d' | sed 's/<[^>]*.//g' | echo 6.0.4.GA)
 
 # Configure Android SDK/NDK path in Titanium CLI
 RUN titanium config android.sdk /opt/android-sdk-linux
