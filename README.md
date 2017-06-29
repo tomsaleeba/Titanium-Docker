@@ -4,6 +4,7 @@ Appcelerator Titanium Docker image to build Android
 
 ## Credits
 
+- [tisdk](https://www.npmjs.com/package/tisdk) install Titanium SDK
 - Original [Docker image](https://github.com/MartinDevillers/ti.build)
 
 ## TODOs
