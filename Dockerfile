@@ -57,7 +57,7 @@ RUN chmod +x setup_4.x && ./setup_4.x
 RUN apt-get install -y nodejs
 
 # Install Titanium SDK and Alloy
-RUN npm install -g titanium alloy tisdk
+RUN npm install -g titanium@5.0.14 alloy@1.9.11 tisdk
 
 # Grab Titanium SDK
 RUN apt-get install -y libxml2-utils
