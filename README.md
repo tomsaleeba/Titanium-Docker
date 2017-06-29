@@ -2,6 +2,10 @@
 
 Appcelerator Titanium Docker image to build Android
 
+## Credits
+
+- Original [Docker image](https://github.com/MartinDevillers/ti.build)
+
 ## TODOs
 
 - [x] Update to latest dependencies
