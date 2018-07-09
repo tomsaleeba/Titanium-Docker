@@ -15,11 +15,9 @@ ENV TISDK_VERSION=7.2.0.GA
 
 ENV APP_DIR=/app
 ENV WORK_DIR=/work
-ENV KEYSTORE_ALIAS=tibuild
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle/
 ENV ANDROID_SDK /opt/android-sdk-linux
 ENV ANDROID_NDK /opt/android-sdk-linux/ndk-bundle
-ENV KEYSTORE_PATH /tmp/tibuild.keystore
 ENV BUILD_DIR build
 ENV TI_LOG_LEVEL info
 

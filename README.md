@@ -4,22 +4,11 @@ Appcelerator Titanium Docker image to build Android
 
 ## Quickstart
 
-  1. generate keystore as per [the doco](https://docs.appcelerator.com/platform/latest/#!/guide/Distributing_Android_apps-section-src-29004925_DistributingAndroidapps-Generateakeypairandcertificate). Note: make sure you **use `tibuild` as the alias** and **set the key password as the same as the keystore password** !
-      ```bash
-      keystorePath=your.keystore
-      keytool \
-        -genkeypair \
-        -v \
-        -keystore $keystorePath \
-        -alias tibuild \
-        -keyalg RSA \
-        -sigalg SHA1withRSA \
-        -validity 1000
-      ```
-  1. Base64 encode your keystore
-      ```bash
-      cat $keystorePath | base64 -w0 > keystore.b64
-      ```
+Note that we're only building a 'dev' build here. You can't build
+a production build for the playstore (i.e. `ti build --target dist-playstore`)
+as that requires you to be logged into your Appcelerator account. That's
+hard to do in a Docker container (in an automated way).
+
   1. change into your source repo
       ```bash
       cd /path/to/your/titanium/app/
@@ -28,8 +17,6 @@ Appcelerator Titanium Docker image to build Android
       ```bash
       docker run \
         --rm \
-        -e KEYSTORE_BASE64=$(cat keystore.b64) \
-        -e KEYSTORE_PASS=<your keystore password> \
         -v $(pwd):/work \
         tomsaleeba/ti.build
       ```
